@@ -16,6 +16,7 @@ decompose = "3.4.0"
 room = "2.8.4"
 hilt = "2.57.2"
 ksp = "2.3.0"
+jetbrainsKotlinJvm = "2.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,4 +52,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationPlugin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 

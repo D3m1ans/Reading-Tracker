@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "ReadingTracker"
 include(":app")
- 
+include(":core")
+include(":core:domain")
