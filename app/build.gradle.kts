@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp.plugin)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.serialization.plugin)
 }
 
 android {
@@ -61,7 +62,12 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    //Domain + Data
+    //Decompose
+    implementation(libs.decompose)
+    implementation(libs.decompose.extensions)
+
+    //Modules
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
+    implementation(project(":core:navigation"))
 }
