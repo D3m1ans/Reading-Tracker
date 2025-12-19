@@ -24,5 +24,3 @@ enum class Genre(val displayName: String) {
         }
     }
 }
-
-val some = Genre.fromDisplayName("Наука")

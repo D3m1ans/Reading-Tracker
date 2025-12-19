@@ -1,7 +1,13 @@
-package com.n1cks.core.domain.model
+package com.n1cks.core.data.local.entity
 
-data class Book(
-    val id: Long = 0,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.n1cks.core.domain.model.BookStatus
+import com.n1cks.core.domain.model.Genre
+
+@Entity(tableName = "book")
+data class BookEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
     val author: String,
     val genre: Genre = Genre.FICTION,

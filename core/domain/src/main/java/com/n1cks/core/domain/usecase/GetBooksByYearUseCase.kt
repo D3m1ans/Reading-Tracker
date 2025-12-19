@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class GetBooksByYearUseCase(
     private val repository: BookRepository
 ) {
-    operator fun invoke(year: Int) : Flow<List<Book>> {
-        return repository.getBooksByYear(year)
+    operator fun invoke(startYear: Int, endYear: Int) : Flow<List<Book>> {
+        return repository.getBooksByYearRange(startYear, endYear)
     }
 }

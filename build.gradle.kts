@@ -7,5 +7,6 @@ plugins {
     alias(libs.plugins.ksp.plugin) apply false
     alias(libs.plugins.serialization.plugin) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
+    alias(libs.plugins.android.library) apply false
 
 }

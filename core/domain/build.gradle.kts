@@ -9,10 +9,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 kotlin {
-    kotlin {
-        compilerOptions{
-            jvmTarget = JvmTarget.fromTarget("11")
-        }
+    compilerOptions{
+        jvmTarget = JvmTarget.fromTarget("11")
     }
 }
 

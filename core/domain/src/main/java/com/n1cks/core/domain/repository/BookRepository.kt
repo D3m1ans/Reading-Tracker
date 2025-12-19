@@ -13,7 +13,7 @@ interface BookRepository {
     fun getBooksByGenre(genre: Genre) : Flow<List<Book>>
     fun getBooksByRating(rating: Float) : Flow<List<Book>>
     fun getBooksByAuthor(author: String) : Flow<List<Book>>
-    fun getBooksByYear(year: Int) : Flow<List<Book>>
+    fun getBooksByYearRange(startYear: Int, endYear: Int) : Flow<List<Book>>
 
     fun searchBooks(query: String) : Flow<List<Book>>
 
