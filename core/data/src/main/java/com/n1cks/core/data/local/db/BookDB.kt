@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.n1cks.core.data.local.converters.BookStatusConverter
 import com.n1cks.core.data.local.converters.GenreConverter
+import com.n1cks.core.data.local.dao.BookDao
 import com.n1cks.core.data.local.entity.BookEntity
 
 @Database(entities = [BookEntity::class], version = 1)
@@ -13,5 +14,5 @@ import com.n1cks.core.data.local.entity.BookEntity
     BookStatusConverter::class
 )
 abstract class BookDB : RoomDatabase() {
-    abstract fun bookDao()
+    abstract fun bookDao() : BookDao
 }
