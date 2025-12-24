@@ -8,14 +8,12 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.value.operator.map
-import com.n1cks.core.domain.factory.UseCaseFactory
 import com.n1cks.core.navigation.NavigationSource
 import com.n1cks.core.navigation.Router
 import javax.inject.Inject
 
 class RootComponent @Inject constructor(
     componentContext: ComponentContext,
-    private val useCaseFactory: UseCaseFactory
 ) : Router, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<NavigationSource>()
