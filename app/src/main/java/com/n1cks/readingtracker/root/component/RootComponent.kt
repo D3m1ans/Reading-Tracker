@@ -10,9 +10,7 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.value.operator.map
 import com.n1cks.core.domain.factory.UseCaseFactory
 import com.n1cks.core.navigation.NavigationSource
-import com.n1cks.core.navigation.Observable
 import com.n1cks.core.navigation.Router
-import com.n1cks.readingtracker.navigation.DecomposeObservable
 import javax.inject.Inject
 
 class RootComponent @Inject constructor(
@@ -30,15 +28,16 @@ class RootComponent @Inject constructor(
         childFactory = ::createChild
     )
 
-    val stack: Value<ChildStack<*, Any>> = _stack
+    val stack: Value<ChildStack<NavigationSource, Any>> = _stack
 
-    override val state: Observable<Router.ChildNavState>
-        get() = DecomposeObservable(_stack.map { childStack ->
+    override val state: Value<Router.ChildNavState>
+        get() = stack.map { childStack ->
             Router.ChildNavState(
                 activeChild = childStack.active.configuration,
                 backStack = childStack.backStack.map { it.configuration }
             )
-        })
+        }
+
 
     override fun navigateToLibrary() {
         navigation.bringToFront(NavigationSource.Library)

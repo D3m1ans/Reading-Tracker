@@ -1,8 +1,10 @@
 package com.n1cks.core.navigation
 
+import com.arkivanov.decompose.value.Value
+
 interface Router {
 
-    val state: Observable<ChildNavState>
+    val state: Value<ChildNavState>
 
     fun navigateToLibrary()
 

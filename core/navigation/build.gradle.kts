@@ -15,4 +15,8 @@ kotlin {
 
 dependencies{
     implementation(libs.serialization.json)
+
+    //Decompose
+    implementation(libs.decompose)
+    implementation(libs.decompose.extensions)
 }

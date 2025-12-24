@@ -3,12 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp.plugin)
-    alias(libs.plugins.hilt.plugin)
 }
 
 android {
-    namespace = "com.n1cks.core.domain"
+    namespace = "com.n1cks.features.bookdetails"
     compileSdk {
         version = release(36)
     }
@@ -29,21 +27,22 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlin {
-        compilerOptions{
+        compilerOptions {
             jvmTarget = JvmTarget.fromTarget("11")
         }
     }
 }
 
-dependencies{
-    implementation(libs.coroutines.android)
-
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

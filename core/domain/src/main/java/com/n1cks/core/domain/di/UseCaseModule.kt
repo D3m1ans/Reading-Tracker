@@ -1,4 +1,4 @@
-package com.n1cks.readingtracker.di
+package com.n1cks.core.domain.di
 
 import com.n1cks.core.domain.factory.UseCaseFactory
 import com.n1cks.core.domain.repository.BookRepository
