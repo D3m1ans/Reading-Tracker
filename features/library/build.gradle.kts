@@ -44,8 +44,26 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+
+    //Coroutines
+    implementation(libs.coroutines.android)
+
+    //Icons
+    implementation(libs.material.icons.extended)
+    implementation(libs.androidx.compose.runtime)
+
+    //Decompose
+    implementation(libs.decompose)
+    implementation(libs.decompose.extensions)
+
+    //Domain
+    implementation(project(":core:domain"))
+    //Navigation
+    implementation(project(":core:navigation"))
 }

@@ -8,41 +8,38 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.value.operator.map
-import com.n1cks.core.navigation.NavigationSource
+import com.n1cks.core.domain.usecase.AddBookUseCase
+import com.n1cks.core.domain.usecase.GetAllBooksUseCase
+import com.n1cks.core.navigation.NavKey
 import com.n1cks.core.navigation.Router
+import com.n1cks.features.library.component.LibraryComponent
 import javax.inject.Inject
 
 class RootComponent @Inject constructor(
     componentContext: ComponentContext,
+    private val getAllBooksUseCase: GetAllBooksUseCase,
+    private val addBookUseCase: AddBookUseCase
 ) : Router, ComponentContext by componentContext {
 
-    private val navigation = StackNavigation<NavigationSource>()
+    private val navigation = StackNavigation<NavKey>()
 
     private val _stack = childStack(
         source = navigation,
-        initialConfiguration = NavigationSource.Library,
-        serializer = NavigationSource.serializer(),
+        initialConfiguration = NavKey.Library,
+        serializer = NavKey.serializer(),
         handleBackButton = true,
         childFactory = ::createChild
     )
 
-    val stack: Value<ChildStack<NavigationSource, Any>> = _stack
-
-    override val state: Value<Router.ChildNavState>
-        get() = stack.map { childStack ->
-            Router.ChildNavState(
-                activeChild = childStack.active.configuration,
-                backStack = childStack.backStack.map { it.configuration }
-            )
-        }
+    val stack: Value<ChildStack<NavKey, Any>> = _stack
 
 
     override fun navigateToLibrary() {
-        navigation.bringToFront(NavigationSource.Library)
+        navigation.bringToFront(NavKey.Library)
     }
 
-    override fun navigateToBookDetails(bookId: Long?) {
-        navigation.bringToFront(NavigationSource.BookDetails(bookId))
+    override fun navigateToBookDetails(bookId: Long) {
+        navigation.bringToFront(NavKey.BookDetails(bookId))
     }
 
     override fun navigateToBack() {
@@ -50,10 +47,16 @@ class RootComponent @Inject constructor(
     }
 
     private fun createChild(
-        config: NavigationSource,
+        config: NavKey,
         context: ComponentContext
-    ) : Any = when(config) {
-        is NavigationSource.Library -> TODO()
-        is NavigationSource.BookDetails -> TODO()
+    ): Any = when (config) {
+        is NavKey.Library -> LibraryComponent(
+            context,
+            getAllBooksUseCase,
+            addBookUseCase,
+            router = this
+        )
+
+        is NavKey.BookDetails -> TODO()
     }
 }

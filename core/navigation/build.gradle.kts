@@ -19,4 +19,7 @@ dependencies{
     //Decompose
     implementation(libs.decompose)
     implementation(libs.decompose.extensions)
+
+    //Navigation
+    implementation(project(":core:navigation"))
 }
